@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies - Talegeta's Website</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Welcome to Talegeta's World</h1>
+        <nav>
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-me.html">About</a></li>
+              <li><a href="hobbies.html">Hobbies</a></li>
+              <li><a href="education.html">Education</a></li>
+              <li><a href="cv.html">CV</a></li>
+          </ul>
+        </nav>
+    </div>
+  </header>
+
+    <main>
+        <section>
+            <h2>Things I Enjoy Doing</h2>
+            <p>Outside of my academic life, I take part in a number of hobbies that help me unwind, relax and stay creative. Here are some of the activities that I enjoy:</p>
+
+            <h3>Technology Exploration</h3>
+            <p>I am fascinated by the rapid advancements in technology. Whether it's exploring new software, testing out the latest gadgets, or researching upcoming trends in artificial intelligence and machine learning, I constantly keep myself engaged in understanding how tech is shaping our future.</p>
+
+            <h3>Following geopolitics</h3>
+            <p>i might seem weird but i really enjoy following geopolitics. especially the interaction between superpowers like the US, China and Russia. from all the stuff happening all around the world is find the US election cycle the most interesting and engaging of all.</p>
+
+            <h3>Watching youtube</h3>
+            <p>youtube is one of the greatest platform that has ever existed. on youtube you can find both entertaining and educational resources, though i consume mostly entertainig stuff. overall, youtube is a great place to relax after a hard class or day.</p>
+
+            <h3>Watching Dystopian Animated Films</h3>
+            <p>I’m drawn to dystopian animated films, especially those that explore complex themes about society and the human condition. Watching these films broadens my perspective and often sparks ideas for my own creative projects, whether in writing or coding.</p>
+
+            <article>
+              <h4>
+                Down here you can see one video i like from YouTube:
+              </h4>
+  
+              <video id="myVideo" controls width="640" height="360">
+                <source src="videos/videoplayback(1).mp4" type="video/mp4">
+              </video>
+  
+              <audio id="myAudio" controls>
+                <source src="audio/The-Future-Of-Content-Addiction.mp3" type="audio/mp3">
+              </audio>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Talegeta. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const video = document.getElementById('myVideo');
+      const audio = document.getElementById('myAudio');
+  
+      // Play both when video starts playing
+      video.addEventListener('play', () => {
+        if (audio.paused) {
+          audio.currentTime = video.currentTime; // Sync audio to video
+          audio.play();
+        }
+      });
+  
+      // Play both when audio starts playing
+      audio.addEventListener('play', () => {
+        if (video.paused) {
+          video.currentTime = audio.currentTime; // Sync video to audio
+          video.play();
+        }
+      });
+  
+      // Pause both when video is paused
+      video.addEventListener('pause', () => {
+        if (!audio.paused) {
+          audio.pause();
+        }
+      });
+  
+      // Pause both when audio is paused
+      audio.addEventListener('pause', () => {
+        if (!video.paused) {
+          video.pause();
+        }
+      });
+  
+      // Sync times while playing
+      video.addEventListener('timeupdate', () => {
+        if (Math.abs(video.currentTime - audio.currentTime) > 0.3) {
+          audio.currentTime = video.currentTime;
+        }
+      });
+  
+      audio.addEventListener('timeupdate', () => {
+        if (Math.abs(audio.currentTime - video.currentTime) > 0.3) {
+          video.currentTime = audio.currentTime;
+        }
+      });
+    </script>
+</body>
+</html>
