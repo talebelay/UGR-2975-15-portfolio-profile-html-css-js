@@ -1,0 +1,10 @@
+#myVideo {
+  width: 90%;
+  height: 60%;
+  border-radius: 8px;
+  margin: 15px 5% 10px 5%;
+}
+
+audio {
+  margin-left: 5%;
+}
