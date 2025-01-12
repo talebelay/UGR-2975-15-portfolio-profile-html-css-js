@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hobbies - Talegeta's Website</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style3.css">
 </head>
 <body>
   <header>
@@ -29,9 +31,6 @@
             <h3>Technology Exploration</h3>
             <p>I am fascinated by the rapid advancements in technology. Whether it's exploring new software, testing out the latest gadgets, or researching upcoming trends in artificial intelligence and machine learning, I constantly keep myself engaged in understanding how tech is shaping our future.</p>
 
-            <h3>Technology Exploration</h3>
-            <p>I am fascinated by the rapid advancements in technology. Whether it's exploring new software, testing out the latest gadgets, or researching upcoming trends in artificial intelligence and machine learning, I constantly keep myself engaged in understanding how tech is shaping our future.</p>
-
             <h3>Following geopolitics</h3>
             <p>i might seem weird but i really enjoy following geopolitics. especially the interaction between superpowers like the US, China and Russia. from all the stuff happening all around the world is find the US election cycle the most interesting and engaging of all.</p>
 
@@ -50,7 +49,7 @@
                 <source src="videos/videoplayback(1).mp4" type="video/mp4">
               </video>
   
-              <audio controls>
+              <audio id="myAudio" controls>
                 <source src="audio/The-Future-Of-Content-Addiction.mp3" type="audio/mp3">
               </audio>
             </article>
@@ -60,5 +59,53 @@
     <footer>
         <p>&copy; 2024 Talegeta. All Rights Reserved.</p>
     </footer>
+
+    <script>
+      const video = document.getElementById('myVideo');
+      const audio = document.getElementById('myAudio');
+  
+      // Play both when video starts playing
+      video.addEventListener('play', () => {
+        if (audio.paused) {
+          audio.currentTime = video.currentTime; // Sync audio to video
+          audio.play();
+        }
+      });
+  
+      // Play both when audio starts playing
+      audio.addEventListener('play', () => {
+        if (video.paused) {
+          video.currentTime = audio.currentTime; // Sync video to audio
+          video.play();
+        }
+      });
+  
+      // Pause both when video is paused
+      video.addEventListener('pause', () => {
+        if (!audio.paused) {
+          audio.pause();
+        }
+      });
+  
+      // Pause both when audio is paused
+      audio.addEventListener('pause', () => {
+        if (!video.paused) {
+          video.pause();
+        }
+      });
+  
+      // Sync times while playing
+      video.addEventListener('timeupdate', () => {
+        if (Math.abs(video.currentTime - audio.currentTime) > 0.3) {
+          audio.currentTime = video.currentTime;
+        }
+      });
+  
+      audio.addEventListener('timeupdate', () => {
+        if (Math.abs(audio.currentTime - video.currentTime) > 0.3) {
+          video.currentTime = audio.currentTime;
+        }
+      });
+    </script>
 </body>
 </html>
